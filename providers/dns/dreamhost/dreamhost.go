@@ -24,6 +24,10 @@ type DNSProvider struct {
 func NewDNSProvider() (*DNSProvider, error) {
 	apiKey := os.Getenv("DREAMHOST_API_KEY")
 
+        return NewDNSProviderCredentials(apiKey)
+}
+
+func NewDNSProviderCredentials(apiKey string) (*DNSProvider, error) {
 	if apiKey == "" {
 		return nil, fmt.Errorf("Dreamhost credentials missing")
 	}
